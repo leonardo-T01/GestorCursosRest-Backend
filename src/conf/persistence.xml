@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence">
-  <persistence-unit name="GestorCursosPU" transaction-type="JTA">
-    <jta-data-source>jdbc/gestorCursosDB</jta-data-source>
+  <persistence-unit name="GestorCursosPU" transaction-type="RESOURCE_LOCAL">
+    <class>co.edu.unipiloto.gestordecursos.entidades.Usuario</class>
+    <class>co.edu.unipiloto.gestordecursos.entidades.Curso</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ep-cool-darkness-123456.us-east-2.aws.neon.tech/neondb?sslmode=require"/>
+      <!-- Configuración directa con Neon -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ep-xxx-xxx.us-east-2.aws.neon.tech/neondb?sslmode=require"/>
       <property name="javax.persistence.jdbc.user" value="neondb_owner"/>
       <property name="javax.persistence.jdbc.password" value="npg_z8doCS1KXNqV"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      
+      <!-- Configuración de EclipseLink -->
+      <property name="eclipselink.target-database" value="PostgreSQL"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
-      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.level" value="FINE"/>
     </properties>
   </persistence-unit>
 </persistence>
